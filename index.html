@@ -179,7 +179,94 @@
       <rect x="45" y="600" width="50" height="50" fill="green" />
     </g>
 
+
+    <!-- mask
+    遮罩
+
+    <defs>
+    <linearGradient id="Gradient">
+        <stop offset="0" stop-color="white" stop-opacity="0" />
+        <stop offset="1" stop-color="white" stop-opacity="1" />
+      </linearGradient>
+      <clipPath id="cp">
+        <rect x="60" y="0" width="35" height="35" />
+      </clipPath>
+      <mask id="Mask">
+        <rect x="0" y="0" width="50" height="50" fill="url(#Gradient)"  />
+      </mask>
+</defs>
+<image xlink:href="./img/1.jpg" x="0" y="0" height="50px" width="50px" mask="url(#Mask)" />
+<image xlink:href="./img/1.jpg" x="60" y="0" height="50px" width="50px" clip-path="url(#cp)" />
+
+    -->
+
+
+
   </svg>
+  <!-- 滤镜 模糊效果
+  x、y	设置滤镜坐标系（默认值0）
+  width、height	滤镜容器大小（默认值100%）
+  result	导出滤镜效果，便于其他滤镜使用
+  in	指定滤镜的输入源
+  -->
+  <svg width="200" height="200">
+    <defs>
+      <filter id="blurFilter">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+        <!-- 模糊效果 -->
+        <feGaussianBlur in="SourceGraphic1" stdDeviation="8" result="blur" />
+        <!-- 阴影效果 -->
+        <feOffset in="blur" dx="10" dy="12" result="offsetBlur1" />
+        <feMerge>
+          <!-- 多个滤镜 -->
+          <feMergeNode in="offsetBlur1" />
+          <feMergeNode in="SourceGraphic1" />
+        </feMerge>
+
+      </filter>
+    </defs>
+    <rect filter="url(#blurFilter)" x="10" y="10" width="50" height="50" fill="red"></rect>
+  </svg>
+  <!-- image -->
+  <svg width="200" height="200">
+    <image xlink:href="./img/pic.jpg" x="0" y="0" height="50px" width="50px"></image>
+  </svg>
+  <!-- svg dom操作 -->
+  <svg width="200" height="200">
+    <rect id="myRect" x="10" y="10" width="50" height="50" fill="red"></rect>
+  </svg>
+  <script>
+    const myRectDom = document.getElementById('myRect')
+    myRectDom.addEventListener('click', (e) => {
+      myRectDom.setAttribute('fill', '#1890ff')
+      myRectDom.setAttribute('width', 180);
+      myRectDom.setAttribute('height', 180);
+    }, false);
+  </script>
+  <!-- svg 动画 -->
+  <!-- stroke-dasharray 
+ 这个的stroke-dasharray值是5，指线条每5px的实线长度就会有5px的间隔距离。
+ 同理，第二条线条，则每10px的实线长度就会有10px的距离。
+第三条线条，这里是stroke-dasharray传入的是两个参数，使用空格隔开（也可以使用逗号隔开参数），第一个参数指的是实线的长度，第二个参数是间隔的距离。如图我们看到红线每5px的长度就会有10px的间隔距离。
+第四条线条传入的是三个参数，前两个参数和上面一样，第三个参数是实线的长度，
+可以理解成奇数为实线长度，而偶数为间隔距离。
+第五条线条传入的是四个参数，但参数是相同的，等价于 5 10。
+    stroke-dashoffset
+    第一条线条没有设置stroke-dashoffset，默认为0。
+
+第二条线条stroke-dashoffset值设置为-10，即线条起始点向右偏移10px。
+
+第三条线条stroke-dashoffset值设置为10，即线条起始点向左偏移10px
+  -->
+  <svg width="500" height="500">
+    <line x1="0" x2="50" y1="10" y2="10" stroke-width="2" stroke="red" stroke-dasharray="5"></line>
+    <line x1="0" x2="50" y1="20" y2="20" stroke-width="2" stroke="red" stroke-dasharray="10" stroke-dashoffset="-10">
+    </line>
+    <line x1="0" x2="50" y1="30" y2="30" stroke-width="2" stroke="red" stroke-dasharray="5,10" stroke-dashoffset="10">
+    </line>
+
+  </svg>
+
 </body>
 
 </html>

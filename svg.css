@@ -25,3 +25,7 @@ text-decoration设置/取消字体上的文本装饰
   font-weight: bolder;
   letter-spacing: 20px;
 }
+
+#myRect {
+  transition: all 0.5s;
+}
