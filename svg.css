@@ -1,0 +1,31 @@
+.rect {
+  /* 图形标签内的width、height以及路径的命令是不能使用css设置的，需要写在标签内 */
+  stroke: antiquewhite;
+  fill: blueviolet;
+  fill-opacity: 0.8;
+}
+
+/*
+font-family设置文本的字体系列
+font-style设置斜体文字的字体样式属性
+font-weight设置字体的粗细
+font-variant在小型大写字母和普通文本选项之间切换
+font-stretch在给定字体的可选拉伸版本中切换
+font-size设置文本的大小
+font-size-adjust独立于字体的实际大小尺寸，调整其可视大小尺寸
+kerning开启或关闭字体间距选项
+letter-spacing设置你的文本中的字母与字母之间的间距
+word-spacing设置你的文本中的单词与单词之间的间距
+text-decoration设置/取消字体上的文本装饰
+
+
+*/
+.text {
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: 20px;
+}
+
+#myRect {
+  transition: all 0.5s;
+}
